@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/restaurant",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/restaurant/:path*",

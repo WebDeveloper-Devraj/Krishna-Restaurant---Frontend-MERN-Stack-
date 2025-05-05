@@ -1,6 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/restaurant/:path*", "destination": "/" },
-    { "source": "/admin/:path*", "destination": "/" }
-  ]
-}
