@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./adminLayout.module.css";
+import styles from "./AdminLayout.module.css";
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 const ManageOrders = () => {

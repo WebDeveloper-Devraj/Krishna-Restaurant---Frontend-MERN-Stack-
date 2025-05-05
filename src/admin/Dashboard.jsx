@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./adminLayout.module.css";
+import styles from "./AdminLayout.module.css";
 import FlashMessage from "../components/FlashMessage/FlashMessage";
 import {
   LineChart,

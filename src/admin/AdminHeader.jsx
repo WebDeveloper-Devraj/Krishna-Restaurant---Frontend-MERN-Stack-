@@ -4,7 +4,6 @@ import styles from "./AdminHeader.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { scrollActions } from "../store/slices/scroll";
-import { cartSliceActions, saveCartToLocalStorage } from "../store/slices/cart";
 import { authoriseActions } from "../store/slices/authorise";
 import { flashMessageActions } from "../store/slices/flashMessage";
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
