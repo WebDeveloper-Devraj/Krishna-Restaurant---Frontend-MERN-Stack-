@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styles from "./AboutUs.module.css";
 import ReviewCard from "./ReviewCard";
 import { useEffect, useState } from "react";
