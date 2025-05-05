@@ -1,0 +1,611 @@
+.galleryPage {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/************Hero Section Styles**************/
+.hero_section {
+  position: relative;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Background Video */
+.video_background video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Video stays behind the text */
+}
+
+/* Overlay for readability */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
+  z-index: 1;
+}
+
+/* Centered content (Text and buttons) */
+.content {
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.content h1 {
+  font-family: 'Lora', serif;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.content p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+}
+
+.cta_buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  /* border: 2px solid black; */
+}
+
+.cta_btn {
+  font-family: 'Poppins', sans-serif;
+  padding: 12px 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book_table {
+  background-color: #f23b1b; /* Tomato color */
+  color: white;
+}
+
+.book_table:hover {
+  background-color: #f92904;
+}
+
+.view_menu {
+  background-color: rgb(188, 188, 9); /* Blue color */
+  color: white;
+}
+
+.view_menu:hover {
+  background-color: rgb(140, 140, 1);
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .hero_section {
+    height: 45vh;
+  }
+  
+  .content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .content p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .cta_buttons {
+    gap: 15px;
+  }
+  
+  .cta_btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+  }
+}
+
+/* mobile size */
+@media(max-width: 600px) {
+  .hero_section {
+    height: 40vh;
+  }
+  
+  .content h1 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    font-weight: 400;
+  }
+
+  .content p {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+  }
+
+  .cta_buttons {
+    gap: 8px;
+    /* border: 2px solid black; */
+  }
+  
+  .cta_btn {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    border-radius: 2px;
+  }
+}
+
+/*************Gallery Section style*************/
+.gallerySection {
+  position: relative;
+  background-color: #000;
+  padding: 20px 0;
+}
+/* Photo & Video Categories Section */
+.categoriesSection h2{
+  padding-bottom: 30px;
+  text-align: center;
+  color: #fff;
+}
+
+/* .categoriesSection h2::after {
+  content: "";
+  position: absolute;
+  width: 10.5%;
+  height: 4px;
+  background-color: red;
+  border-radius: 2px;
+  top: 1.28%;
+  left:44.8%;
+} */
+
+.categories {
+  display: flex-start;
+  padding:0 50px 20px 50px;
+}
+
+.categories button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
+  color: #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.categories button.active {
+  background: #c94b06;
+}
+
+.categories button:hover {
+  background: #c94b06;
+}
+
+.subCategories {
+  padding:0 50px 20px 50px;
+}
+
+.subCategories button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  font-weight: 700;
+}
+
+.subCategories button.active {
+  background-color: #a2ff00;
+}
+
+.subCategories button:hover {
+  background-color: #a2ff00;
+  color: #000;
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .categoriesSection h2{
+    padding-bottom: 20px;
+    font-size: 1.6rem;
+  }
+  
+  .categoriesSection h2::after {
+    width: 16.7%;
+    height: 3.5px;
+    top: 1.7%;
+    left:41.8%;
+  }
+  
+  .categories {
+    padding:0 20px 10px 20px;
+  }
+  
+  .categories button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 23px;
+    font-size: 0.9rem;
+  }
+  
+  .subCategories {
+    padding:0 20px 10px 20px;
+  }
+  
+  .subCategories button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 23px;
+    font-weight: 700;
+  }
+}
+
+/* mobile size */
+@media(max-width: 600px) {
+  .categoriesSection h2{
+    padding-bottom: 20px;
+    font-size: 1.3rem;
+  }
+  
+  .categoriesSection h2::after {
+    width: 28%;
+    height: 3px;
+    top: 2.8%;
+    left: 36%;
+  }
+  
+  .categories {
+    padding:0 10px 10px 15px;
+  }
+  
+  .categories button {
+    margin-right: 10px;
+    padding: 3px 7px;
+    border-radius: 23px;
+    font-size: 0.7rem;
+  }
+  
+  .subCategories {
+    padding:0 10px 10px 15px;
+  }
+  
+  .subCategories button {
+    margin-right: 10px;
+    padding: 3px 7px;
+    border-radius: 23px;
+    font-size: 0.7rem;
+  }
+}
+
+/* media section style */
+.galleryItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 70px;
+  padding: 10px;
+}
+
+.no_gallery_msg {
+  text-align: center;
+  color: #888;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.galleryItem {
+  height: 50vh;
+  width: 25vw;
+}
+
+.galleryItem img,
+.galleryItem video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.galleryItem:hover img,
+.galleryItem:hover video {
+  transform: scale(1.05);
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .galleryItems {
+    gap: 30px;
+    padding: 10px;
+  }
+  
+  .galleryItem {
+    height: 20vh;
+    width: 25vw;
+  }  
+}
+
+/* mobile size */
+@media(max-width: 600px) {
+  .galleryItems {
+    gap: 20px;
+    padding: 10px;
+  }
+  
+  .galleryItem {
+    height: 17vh;
+    width: 25vw;
+  }  
+}
+
+/* Customer Highlights Section */
+.customerHighlightsSection {
+  position: relative;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  padding-top: 50px;
+}
+
+/* .customerHighlightsSection h2::after {
+  content: "";
+  position: absolute;
+  left: 39.3%;
+  top: 3.37%;
+  width: 327px;
+  height: 4px;
+  background-color: red;
+  border-radius: 2px;
+} */
+
+.customerGallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 70px;
+  padding: 10px 0 0;
+}
+
+.no_highlights_msg {
+  text-align: center;
+  color: #888;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.customerItem {
+  height: 50vh;
+  width: 25vw;
+}
+
+.customerItem img,
+.customerItem video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.customerItem:hover img,
+.customerItem:hover video {
+  transform: scale(1.05);
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .customerHighlightsSection {
+    position: relative;
+    padding: 20px;
+    padding-top: 30px;
+  }
+
+  .customerHighlightsSection h2 {
+    font-size: 1.6rem;
+  }  
+
+  .customerHighlightsSection h2::after {
+    left: 35.1%;
+    top: 3.8%;
+    width: 30%;
+    height: 3.5px;
+  }
+
+  .customerGallery {
+    gap: 30px;
+  }
+  
+  .customerItem {
+    height: 20vh;
+    width: 25vw;
+  }
+}
+
+/* mobile size */
+@media(max-width: 600px) {
+  .customerHighlightsSection {
+    padding: 20px;
+  }
+
+  .customerHighlightsSection h2 {
+    font-size: 1.3rem;
+  }  
+
+  .customerHighlightsSection p {
+    font-size: 0.7rem;
+  }
+
+  .customerHighlightsSection h2::after {
+    left: 25.2%;
+    top: 6%;
+    width: 50%;
+    height: 3px;
+  }
+
+  .customerGallery {
+    gap: 20px;
+    padding: 10px;
+  }
+  
+  .customerItem {
+    height: 12vh;
+    width: 20vw;
+  }
+}
+
+/******************* Gallery Submission Section ********************/
+.submissionSection {
+  position: relative;
+  padding: 20px 20px 40px 20px;
+  background-color: #000;
+  color: #fff;
+}
+
+.submissionSection h2 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* .submissionSection h2::after {
+  content: "";
+  position: absolute;
+  left: 40.8%;
+  top: 8.5%;
+  width: 18.4%;
+  height: 4px;
+  background-color: red;
+  border-radius: 2px;
+} */
+
+.submissionForm {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100% !important;
+  padding: 10px !important;
+  background-color: #1B1A1A !important;
+  color: #fff !important;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: rgb(108, 107, 107);
+  font-size: 14px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .submissionSection {
+    padding: 20px;
+  }
+  
+  .submissionSection h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 1.6rem;
+  }
+  
+  .submissionSection h2::after {
+    left: 35.5%;
+    top: 8%;
+    width: 29.3%;
+    height: 3.5px;
+  }
+  
+  .submissionForm {
+    max-width: 450px;
+  }
+  
+  .submitButton {
+    padding: 7px 0;
+    font-size: 1.2rem;
+  }
+}
+
+/* mobile size */
+@media(max-width: 600px) {
+  .submissionSection h2 {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+  }
+  
+  .submissionSection h2::after {
+    left: 26%;
+    top: 11%;
+    width: 48.5%;
+    height: 3px;
+  }
+  
+  .submissionForm {
+    width: 80%;
+  }
+
+  .formGroup {
+    margin-bottom: 10px;
+  }
+  
+  .formGroup label {
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+  }
+  
+  .formGroup input,
+  .formGroup textarea {
+    width: 100%;
+    padding: 5px;
+    padding-left: 8px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+  
+  .submitButton {
+    padding: 4px 0;
+    font-size: 0.9rem;
+  }
+}

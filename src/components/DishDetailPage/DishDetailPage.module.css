@@ -1,0 +1,306 @@
+/* 🌟 This ensures only the Dish Detail Page has a dark background */
+.pageBackground {
+  background-color: #121212; /* Dark background */
+  color: #ffffff; /* White text */
+  min-height: 100vh; /* Full height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+/* Dish Detail Container */
+.dishDetailContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  width: 1000px;
+  margin: auto;
+  padding: 50px 20px;
+  background-color: #1e1e1e; /* Slightly lighter for contrast */
+  color: #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Dish Image */
+.dishImage {
+  width: 55%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Dish Details */
+.dishDetails {
+  flex: 1;
+  max-width: 500px;
+  text-align: left;
+}
+
+.dishName {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #ffcc00; /* Gold highlight */
+  margin-bottom: 15px;
+}
+
+.dishDescription {
+  font-size: 1.1rem;
+  color: #d0d0d0;
+  margin-bottom: 20px;
+}
+
+.dishInfo {
+  font-size: 1rem;
+  color: #bbbbbb;
+  margin-bottom: 8px;
+}
+
+.dishPrice {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff5733;
+}
+
+/* Add to Cart Button */
+.addToCartButton {
+  background: linear-gradient(45deg, #ff5722, #ff8c00);
+  color: white;
+  margin-top: 8px;
+  padding: 8px 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4);
+}
+
+.addToCartButton:hover {
+  background: linear-gradient(45deg, #ff8c00, #ff5722);
+  transform: scale(1.05);
+}
+
+/* Quantity Container */
+.quantityContainer {
+  background: linear-gradient(45deg, #ff5722, #ff8c00);
+  color: white;
+  display: flex; /* Aligns buttons and quantity properly */
+  align-items: center;
+  justify-content: space-between; /* Keeps - and + at the ends */
+  margin: 15px 0;
+  padding: 8px 20px; /* Adjusted for uniform button size */
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4);
+  width: 180px; /* Match Add to Cart button width */
+  height: 50px; /* Match Add to Cart button height */
+}
+
+/* Quantity Buttons (- and +) */
+.quantityButton {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  padding: 5px 15px;
+}
+
+.quantityButton:hover {
+  transform: scale(1.1);
+}
+
+/* Quantity Number (Centered) */
+.quantityText {
+  flex-grow: 1; /* Ensures quantity stays centered */
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.goToCartButton {
+  color: white;
+  cursor: pointer;
+}
+
+/* heart icon styling */
+.favIconBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  transition: transform 0.2s ease;
+  padding: 0;
+}
+
+.favIconBtn:hover {
+  transform: scale(1.3);  
+  background-color: transparent;
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .pageBackground {
+    min-height: 77vh;
+    padding: 50px 0;
+  }
+  
+  /* Dish Detail Container */
+  .dishDetailContainer {
+    gap: 30px;
+    width: 80%;
+    padding: 30px 20px;
+  }
+  
+  /* Dish Image */
+  .dishImage {
+    width: 45%;
+  }
+  
+  .dishName {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+  }
+  
+  .dishDescription {
+    font-size: 1rem;
+    margin-bottom: 0px;
+  }
+  
+  .dishInfo {
+    font-size: 1rem;
+  }
+  
+  .dishPrice {
+    font-size: 1.2rem;
+  }
+  
+  /* Add to Cart Button */
+  .addToCartButton {
+    margin-top: 4px;  
+    padding: 10px 25px;
+    font-size: 1.1rem;
+  }
+  
+  .addToCartButton:hover {
+    background: linear-gradient(45deg, #ff8c00, #ff5722);
+    transform: scale(1.05);
+  }
+  
+  /* Quantity Container */
+  .quantityContainer {
+    margin: 10px 0;
+    padding: 4px 10px; /* Adjusted for uniform button size */
+    font-size: 1rem;
+    width: 160px; /* Match Add to Cart button width */
+    height: 45px; /* Match Add to Cart button height */    
+  }
+  
+  /* Quantity Buttons (- and +) */
+  .quantityButton {
+    font-size: 1.5rem;
+    padding: 0px 8px;
+  }
+  
+  /* Quantity Number (Centered) */
+  .quantityText {
+    font-size: 1.2rem;
+  }
+  
+  /* heart icon styling */
+  .favIconBtn {
+    top: 8px;
+    right: 5px;
+    font-size: 20px;
+    padding: 0;
+  }
+}
+
+/* mobile size */
+@media(max-width: 600px) {
+  .pageBackground {
+    min-height: 70vh;
+    padding: 50px 0;
+  }
+  
+  /* Dish Detail Container */
+  .dishDetailContainer {
+    gap: 30px;
+    width: 75%;
+    padding: 20px;
+  }
+  
+  /* Dish Image */
+  .dishImage {
+    width: 70%;
+  }
+  
+  .dishName {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+  }
+  
+  .dishDescription {
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+  }
+  
+  .dishInfo {
+    font-size: 0.8rem;
+  }
+  
+  .dishPrice {
+    font-size: 1rem;
+  }
+  
+  .addToCartButton {
+    margin-top: 4px;  
+    padding: 7px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .quantityContainer {
+    width: 140px;
+    height: 38px;
+    padding: 0;
+  }
+  
+  .quantityButton {
+    font-size: 1.3rem;
+  }
+  
+  .quantityText {
+    font-size: 1.1rem;
+  }
+  
+  /* heart icon styling */
+  .favIconBtn {
+    top: 4px;
+    right: 0px;
+    font-size: 18px;
+    padding: 0;
+    /* border: 2px solid yellow; */
+  }
+
+  .goToCartButton {
+    font-size: 0.8rem;
+  }
+}

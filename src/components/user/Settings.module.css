@@ -1,0 +1,272 @@
+.container {
+  padding: 2rem;
+  padding-top: 3rem;
+  color: #fff;
+  background-color: #0f0f0f;
+}
+
+.settingsContainer {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 3rem;
+  padding: 2rem;
+  padding-top: 1rem;
+  font-family: sans-serif;
+  background-color: #292929;
+  border-radius: 1rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+}
+
+.section h3 {
+  color: #000;
+}
+
+.fieldGroup {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+}
+
+.fieldGroup input {
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline-color: #696565;
+}
+
+.updateBtn {
+  padding: 0.5rem 1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.updateBtn:hover {
+  background-color: #4caf50;
+}
+
+.toggleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  color: #000
+}
+
+.themeBtn {
+  background-color: #000;
+}
+
+.deleteBtn {
+  padding: 0.5rem 1rem;
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.deleteBtn:hover {
+  background-color: #c62828;
+}
+
+.deleteConfirmForm {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: #fff0f0;
+  padding: 1rem;
+  border: 1px solid #ffcccc;
+  border-radius: 8px;
+}
+
+.deleteConfirmForm input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline-color: #c62828;
+}
+
+.confirmDeleteBtn {
+  padding: 0.5rem 1rem;
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.confirmDeleteBtn:hover {
+  background-color: #c62828;
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .settingsContainer {
+    max-width: 600px;
+  }
+  
+  .section {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+  }
+  
+  .section h3 {
+    color: #000;
+    font-size: 1.4rem;
+  }
+  
+  .fieldGroup {
+    margin-bottom: 0.5rem;
+  }
+
+  .fieldGroup label {
+    font-size: 0.9rem;
+  }
+  
+  .fieldGroup input {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .toggleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    color: #000
+  }
+  
+  .updateBtn{
+    padding: 0.5rem 1rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .updateBtn:hover {
+    background-color: #4caf50;
+  }
+  
+  .themeBtn {
+    background-color: #000;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .deleteBtn {
+    font-size: 0.9rem;
+  }
+  
+  .confirmDeleteBtn {
+    font-size: 0.9rem;
+  }
+  
+  .confirmDeleteBtn:hover {
+    background-color: #c62828;
+  }
+}
+
+/* mobile size */
+@media(max-width: 600px) {
+  .container {
+    padding: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .settingsContainer {
+    width: 95%;
+    padding: 0.8rem;
+  }
+  
+  .section {
+    margin-bottom: 1.2rem;
+    padding: 0.6rem;
+  }
+  
+  .section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .fieldGroup {
+    margin-bottom: 0.4rem;
+  }
+
+  .fieldGroup label {
+    font-size: 0.8rem;
+  }
+  
+  .fieldGroup input {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .updateBtn{
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .updateBtn:hover {
+    background-color: #4caf50;
+  }
+  
+  .toggleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    color: #000
+  }
+  
+  .themeBtn {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+  
+  .deleteBtn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.9rem;
+  }
+
+  .deleteConfirmForm {
+    margin-top: 00.5rem;
+    padding: 0.6rem;
+  }
+
+  .deleteConfirmForm input {
+    padding: 0.3rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .confirmDeleteBtn {
+    font-size: 0.8rem;
+    padding: 0.3rem 1rem;
+    margin: 0;
+  }
+  
+  .confirmDeleteBtn:hover {
+    background-color: #c62828;
+  }
+}

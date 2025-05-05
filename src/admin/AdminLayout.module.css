@@ -1,0 +1,428 @@
+/* General Admin Layout Styles */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+main {
+  box-sizing: border-box;
+  width: 55%;
+}
+
+/* Dashboard Styles */
+.dashboard {
+  padding: 3rem;
+  padding-top: 5.5rem;
+  width: 45%;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+}
+
+.title {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: white;
+  width: 45%;
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card h3 {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.orders { border-left: 5px solid #007bff; }
+.revenue { border-left: 5px solid #28a745; }
+.customers { border-left: 5px solid #ffc107; }
+.visits { border-left: 5px solid #6f42c1; }
+
+.section {
+  background: white;
+  /* border: 2px solid firebrick; */
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  max-width: 40rem;
+}
+
+.section h3 {
+  margin-bottom: 0.6rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.chartPlaceholder {
+  height: 20rem;
+  background: #f0f0f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-style: italic;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.table th,
+.table td {
+  padding: 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+/* 
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list li {
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+} */
+
+.statusCompleted {
+  color: green;
+  font-weight: bold;
+}
+.statusPreparing {
+  color: orange;
+  font-weight: bold;
+}
+.statusPending {
+  color: red;
+  font-weight: bold;
+}
+.noOrders {
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+}
+
+.statusPaid {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.statusUnpaid {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .dashboard {
+    padding: 0.7rem;
+    padding-top: 5.5rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .cardsContainer {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card {
+    padding: 0.8rem;
+  }
+
+  .card p {
+    font-size: 1.3rem;
+  }
+
+  .section {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+
+  .section h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .chartPlaceholder {
+    height: 100%;
+    width: 100%;
+  }
+
+  .table {
+    width: 100%;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.2rem 0;
+    padding-right: 0.6rem;
+    font-size: 9.6px;
+  }
+  
+  .statusPaid {
+    padding: 2px 4px;
+  }
+  
+  .statusUnpaid {
+    padding: 4px 8px;
+  }
+}
+
+/* Manage Orders Styles */
+.manage-orders {
+  padding: 3rem;
+  padding-top: 5.5rem;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+.ordersTable {
+  border: 1px solid #e0e0e0;
+}
+
+.ordersTable th,
+.ordersTable td {
+  padding: 15px 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.ordersTable th {
+  background-color: #f4f4f4;
+  color: #555;
+}
+
+.ordersTable tbody tr {
+  transition: background-color 0.3s;
+}
+
+.ordersTable tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.ordersTable td {
+  border-bottom: 1px solid #e0e0e0;
+}
+/* 
+.status {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid red;
+}
+
+.status.preparing {
+  background-color: #ffcc00;
+  color: #fff;
+}
+
+.status.completed {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.status.pending {
+  background-color: #ff9800;
+  color: #fff;
+} */
+
+.markCompleteButton {
+  padding: 8px 15px;
+  background-color: #f19c1d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.markCompleteButton:hover {
+  background-color: #ed8e00;
+}
+
+.markDeliverButton {
+  padding: 8px 15px;
+  margin-top: 0.5rem;
+  background-color: #f19c1d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.markDeliverButton:hover {
+  background-color: #ed8e00;
+}
+
+.completeButton {
+  padding: 8px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.completeButton:hover {
+  background-color: #4caf50;
+}
+
+.deliveredButton {
+  padding: 8px 15px;
+  margin-top: 0.5rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.deliveredButton:hover {
+  background-color: #4caf50;
+}
+
+.noData {
+  text-align: center;
+  color: #888;
+}
+
+.loading {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 20px;
+  color: #007bff;
+}
+
+.markPaidButton {
+  background-color: #28a745; /* green */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+  margin-top: 6px;
+  display: inline-block;
+}
+
+.markPaidButton:hover {
+  background-color: #218838;
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .manage-orders {
+    padding: 0.8rem;
+    padding-top: 5.3rem;
+  }
+  
+  .heading {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1px;
+  }
+  
+  .ordersTable th,
+  .ordersTable td {
+    padding: 15px 0px;
+    font-size: 12.3px;
+  }
+  
+  .markCompleteButton {
+    padding: 4px 8px;
+  }
+  
+  .markDeliverButton {
+    padding: 4px 8px;
+    margin-top: 0.5rem;
+  }
+  
+  .completeButton {
+    padding: 8px 15px;
+  }
+  
+  .deliveredButton {
+    padding: 4px 8px;
+    margin-top: 0.5rem;
+  }
+  
+  .noData {
+    text-align: center;
+    color: #888;
+  }
+  
+  .loading {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+  }
+  
+  .markPaidButton {
+    background-color: #28a745; /* green */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+    margin-top: 6px;
+    display: inline-block;
+  }
+  
+  .markPaidButton:hover {
+    background-color: #218838;
+  }
+}

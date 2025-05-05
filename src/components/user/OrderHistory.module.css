@@ -1,0 +1,159 @@
+.container {
+  padding: 2rem;
+  padding-top: 6rem;
+  color: #fff;
+  background-color: #0f0f0f;
+  min-height: 100vh;
+}
+
+.heading {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 600;
+  color: #FFD700;
+  margin-bottom: 2rem;
+}
+
+.noOrder {
+  color: #ccc;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.orderCard {
+  background-color: #1c1c1c;
+  width: 45%;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00000030;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+}
+
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.itemList {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+  color: #ddd;
+}
+
+.orderFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total {
+  font-weight: bold;
+  color: #f0a500;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.status.delivered {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.status.cancelled {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .container {
+    padding-top: 5rem;
+  }
+  
+  .heading {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .noOrder {
+    font-size: 1.2rem;
+  }
+  
+  .orderCard {
+    width: 85%;
+    padding: 1.2rem;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+  }
+  
+  .itemList {
+    margin-bottom: 0.5rem;
+  }
+  
+  .status {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  
+  .status.delivered {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .status.cancelled {
+    background-color: #dc3545;
+    color: #fff;
+  }
+}
+
+/* mobile size */
+@media(max-width: 600px) {
+  .container {
+    padding-top: 3rem;
+  }
+  
+  .heading {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .noOrder {
+    font-size: 1rem;
+  }
+  
+  .orderCard {
+    width: 85%;
+    padding: 0.8rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+  
+  .orderHeader {
+    font-size: 0.7rem;
+    flex-wrap: wrap;
+    font-weight: 400;
+  }
+
+  .itemList {
+    margin-bottom: 0.5rem;
+  }
+
+  .itemList li {
+    font-size: 0.7rem;
+  }
+
+  .status {
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+}

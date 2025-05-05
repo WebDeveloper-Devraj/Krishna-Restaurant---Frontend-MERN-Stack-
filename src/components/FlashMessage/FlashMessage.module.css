@@ -1,0 +1,62 @@
+/* FlashMessage.module.css */
+.flashMessage {
+  position: fixed;
+  top: 88px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 1000;
+  animation: fadeInOut 5s ease-in-out;
+}
+
+/* Success message style */
+.success {
+  background-color: #28a745; /* Green for success messages */
+}
+
+/* Error message style */
+.error {
+  background-color: #dc3545; /* Red for error messages */
+}
+
+/* Fade In & Out animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .flashMessage {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+/* mobile size */
+@media(max-width: 600px) {
+  .flashMessage {
+    top: 50px;
+    left: 50%;
+    color: white;
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,12 @@
+.app-container {
+  /* display: flex;
+  flex-direction: column; */
+  /* border: 2px solid red; */
+  width: 100%;
+  /* min-height: 100%; Ensure full viewport height */
+}
+
+.content {
+  flex-grow: 1; /* Allows the content to expand and push the footer down */
+  /* padding: 20px; */
+}

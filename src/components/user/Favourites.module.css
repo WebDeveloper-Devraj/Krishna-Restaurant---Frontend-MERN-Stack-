@@ -1,0 +1,156 @@
+.container {
+  padding: 2rem;
+  padding-top: 6rem;
+  color: #fff;
+  background-color: #0f0f0f;
+  min-height: 100vh;
+}
+
+.heading {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 600;
+  color: #FFD700;
+  margin-bottom: 2rem;
+}
+
+.noOrder {
+  color: #ccc;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.orderCard {
+  background-color: #1c1c1c;
+  width: 40%;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00000030;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.image {
+  width: 50%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.3rem;
+  margin: 1rem;
+}
+
+.orderFooter {
+  align-items: center;
+}
+
+.cartBtn,
+.removeBtn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: background-color 0.3s ease;
+}
+
+.cartBtn {
+  background-color: #ffa500;
+  color: #000;
+}
+
+.cartBtn:hover {
+  background-color: #ffc107;
+}
+
+.removeBtn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.removeBtn:hover {
+  background-color: #ff4d4d;
+}
+
+.price {
+  color: #f0a500;
+  font-weight: bold;
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .container {
+    min-height: 76vh;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+  }
+
+  .orderCard {
+    width: 70%;
+  }
+  
+  .orderHeader {
+    font-size: 1.3rem;
+  }
+  
+  .image {
+    width: 60%;
+    margin: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cartBtn,
+  .removeBtn {
+    padding: 8px 15px;
+    margin: 0 10px;
+    font-size: 1.2rem;
+  }
+}
+
+/* mobile size */
+@media(max-width: 600px) {
+  .container {
+    min-height: 75vh;
+  }
+
+  .heading {
+    font-size: 1.3rem;
+  }
+
+  .noOrder {
+    font-size: 0.8rem;
+  }
+
+  .orderCard {
+    width: 90%;
+  }
+  
+  .orderHeader {
+    font-size: 0.8rem;
+  }
+  
+  .image {
+    width: 60%;
+    height: 50%;
+    margin: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cartBtn,
+  .removeBtn {
+    padding: 4px 8px;
+    margin: 0 10px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+  }
+}

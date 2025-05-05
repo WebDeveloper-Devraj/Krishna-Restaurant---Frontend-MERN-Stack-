@@ -1,0 +1,126 @@
+/* Admin Header Base Styles */
+.header { 
+  font-family: 'Poppins', sans-serif;
+  background: #000;
+  padding: 8px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.scrolled {
+  background-color: rgb(0, 0, 0);
+}
+
+.header_container {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo img {
+  width: 100px;
+  height: 60px;
+}
+
+/* Navigation Styles */
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.navigation ul {
+  display: flex;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navigation a:hover {
+  color: #FFD700;
+}
+
+.navigation a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #FF6347;
+  transition: width 0.3s ease;
+}
+
+.navigation a:hover::after {
+  width: 100%;
+}
+
+.navigation a.activeLink {
+  color: #FFD700;
+}
+
+.navigation a.activeLink::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #FF6347;
+}
+
+/* Action Buttons */
+.action_buttons {
+  display: flex;
+  align-items: center;
+}
+
+.action_buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  background-color: #FF6347;
+  color: #FFFFFF;
+  transition: background-color 0.3s ease;
+}
+
+.action_buttons button:hover {
+  background-color: #FF4500;
+}
+
+/* tab size */
+@media (min-width: 600px) and (max-width: 1030px) {
+  .navigation a {
+    font-size: 1.2rem;
+  }
+}
+
+/* mobile size */
+@media(max-width: 600px) {
+  .logo img {
+    width: 80px;
+    height: 60px;
+  }
+
+  .navigation a {
+    font-size: 1.1rem;
+  }
+}
+

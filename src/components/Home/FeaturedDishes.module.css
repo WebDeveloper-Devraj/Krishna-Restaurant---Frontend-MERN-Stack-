@@ -1,0 +1,199 @@
+#featured_dishes {
+  padding: 30px 20px;
+  background-color: #040404;
+  text-align: center;
+  /* border: 2px solid ghostwhite; */
+}
+
+.no_dishes_msg {
+  text-align: center;
+  margin: 2rem 0 1rem 0;
+  color: #777;
+  font-size: 1.2rem;
+}
+
+
+#featured_dishes h2{
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+#featured_dishes h2 span {
+  /* border: 2px solid yellow; */
+  position: relative;
+}
+
+#featured_dishes h2 span::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  width: 200px;
+  height: 4px;
+  left: 20px;
+  background-color: red;
+  border-radius: 3px;
+}
+
+.dish_cards {
+  padding: 0px 5%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  /* border: 2px solid red; */
+}
+
+.dish_card {
+  width: 28%;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  /* border: 2px solid red; */
+  min-height: 440px;
+}
+
+.dish_card img {
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+}
+
+.dish_price {
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.cta_btn {
+  font-family: 'Poppins', sans-serif;
+  padding: 8px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.order_now {
+  background-color: #f64425; /* Tomato color */
+  color: white;
+  /* border: 2px solid black; */
+  /* margin-top: 50px; */
+}
+
+.order_now:hover {
+  background-color: #f92904;
+}
+
+.view_menu {
+  background-color: rgb(188, 188, 9); /* Blue color */
+  margin-top: 30px;
+  color: white;
+}
+
+.view_menu:hover {
+  background-color: rgb(140, 140, 1);
+}
+
+.dish_description {
+  min-height: 80px;
+  overflow: hidden;
+  margin-bottom: 0px;
+}
+
+@media (min-width: 600px) and (max-width: 1020px) {
+  #featured_dishes h2 span {
+    font-size: 1.7rem;
+  }
+  
+  #featured_dishes h2 span::after {
+    width: 175px;
+    left: 12px;
+  }
+
+  .dish_cards {
+    gap: 30px;
+    padding: 0;
+  }
+
+  .dish_card {
+    padding: 15px;
+    width: 40%;
+  }
+
+  .dishTitle {
+    font-size: 1.4rem;
+  }
+
+  .dish_description {
+    font-size: 0.9rem;
+  }
+
+  .dish_price {
+    font-size: 1.3rem;
+  }
+
+  .cta_btn {
+    padding: 6px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  #featured_dishes {
+    padding: 20px 15px;
+  }
+
+  #featured_dishes h2 span {
+    font-size: 1.4rem;
+  }
+  
+  #featured_dishes h2 span::after {
+    width: 145px;
+    height: 3px;
+    left: 11px;
+  }
+
+  .dish_cards {
+    gap: 15px;
+    padding: 0;
+  }
+
+  .dish_card {
+    padding: 10px;
+    width: 45%;
+    min-height: 200px;
+    max-height: 270px;
+  }
+
+  .dish_card img {
+    height: 35%;
+  }
+
+  .cardBody {
+    padding: 0;
+  }
+
+  .dishTitle {
+    font-size: 1rem;
+    padding-top: 2px;
+  }
+
+  .dish_description {
+    font-size: 0.65rem;
+    height: auto;
+    min-height: 52px;
+  }
+
+  .dish_price {
+    font-size: 1rem;
+  }
+
+  .cta_btn {
+    padding: 3px 10px;
+    font-size: 0.7rem;
+  }
+}
