@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./HeroSection.module.css";
-import herosectionVideo from "../../assets/herosectionVideo.mp4";
+import herosectionVideo from "../../assets/home/HomeHeroSectionVideo.mp4";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
