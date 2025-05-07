@@ -16,6 +16,8 @@ const SignUpPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const { open } = useSelector((store) => store.loginSignUpUi);
   const [validated, setValidated] = useState(false);
 
@@ -26,6 +28,7 @@ const SignUpPage = () => {
     if (form.checkValidity() === false) {
       event.stopPropagation(); // Prevent actual submission
     } else {
+      setIsLoading(true);
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
@@ -37,7 +40,6 @@ const SignUpPage = () => {
       });
 
       const result = await response.json();
-      // console.log(result);
 
       if (result.success) {
         dispatch(authoriseActions.setUser(result.user));
@@ -51,7 +53,6 @@ const SignUpPage = () => {
           })
         );
       } else {
-        console.log(result.message);
         dispatch(
           flashMessageActions.setFlashMessage({
             message: result.message,
@@ -60,6 +61,7 @@ const SignUpPage = () => {
         );
         navigate("/restaurant/user/signup");
       }
+      setIsLoading(false);
     }
 
     setValidated(true);
@@ -199,8 +201,18 @@ const SignUpPage = () => {
                 </div>
               </div>
 
-              <button type="submit" className={styles.login}>
-                Sign Up
+              <button
+                type="submit"
+                className={styles.login}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <span className={styles.spinner}></span> Loading...
+                  </>
+                ) : (
+                  "Sign Up"
+                )}
               </button>
             </form>
           </div>

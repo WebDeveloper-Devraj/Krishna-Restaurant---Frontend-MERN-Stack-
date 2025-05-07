@@ -10,54 +10,12 @@ const Settings = () => {
   const user = useSelector((store) => store.authorise);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [validated, setValidated] = useState(false);
 
   // const [theme, setTheme] = useState("light");
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-
-  const handleAccountDelete = async (event) => {
-    event.preventDefault();
-    const form = event.target;
-
-    if (form.checkValidity() === false) {
-      event.stopPropagation(); // Prevent actual submission
-    } else {
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      const res = await fetch(`${BASE_URL}/restaurant/user/delete`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          password: data.password,
-        }),
-        credentials: "include",
-      });
-
-      const result = await res.json();
-
-      if (result.success) {
-        dispatch(
-          flashMessageActions.setFlashMessage({
-            message: result.message,
-            type: "success",
-          })
-        );
-
-        dispatch(authoriseActions.setUser(null));
-        navigate("/restaurant");
-      } else {
-        dispatch(
-          flashMessageActions.setFlashMessage({
-            message: result.message,
-            type: "error",
-          })
-        );
-      }
-    }
-
-    setValidated(true);
-  };
 
   const handleUpdateProfile = async (event) => {
     event.preventDefault();
@@ -66,6 +24,7 @@ const Settings = () => {
     if (form.checkValidity() === false) {
       event.stopPropagation(); // Prevent actual submission
     } else {
+      setIsUpdating(true);
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
@@ -113,6 +72,53 @@ const Settings = () => {
           })
         );
       }
+
+      setIsUpdating(false);
+    }
+    setValidated(true);
+  };
+
+  const handleAccountDelete = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+
+    if (form.checkValidity() === false) {
+      event.stopPropagation(); // Prevent actual submission
+    } else {
+      setIsDeleting(true);
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      const res = await fetch(`${BASE_URL}/restaurant/user/delete`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          password: data.password,
+        }),
+        credentials: "include",
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        dispatch(
+          flashMessageActions.setFlashMessage({
+            message: result.message,
+            type: "success",
+          })
+        );
+
+        dispatch(authoriseActions.setUser(null));
+        navigate("/restaurant");
+      } else {
+        dispatch(
+          flashMessageActions.setFlashMessage({
+            message: result.message,
+            type: "error",
+          })
+        );
+      }
+      setIsDeleting(false);
     }
 
     setValidated(true);
@@ -216,8 +222,18 @@ const Settings = () => {
               />
             </div>
 
-            <button type="submit" className={styles.updateBtn}>
-              Update Profile
+            <button
+              type="submit"
+              className={styles.updateBtn}
+              disabled={isUpdating}
+            >
+              {isUpdating ? (
+                <>
+                  <span className={styles.spinner}></span> Updating...
+                </>
+              ) : (
+                "Update Profile"
+              )}
             </button>
           </form>
         </section>
@@ -274,8 +290,18 @@ const Settings = () => {
                 Looks good!
               </div>
 
-              <button type="submit" className={styles.confirmDeleteBtn}>
-                Confirm Delete
+              <button
+                type="submit"
+                className={styles.confirmDeleteBtn}
+                disabled={isDeleting}
+              >
+                {isDeleting ? (
+                  <>
+                    <span className={styles.spinner}></span> Deleting...
+                  </>
+                ) : (
+                  "Confirm Delete"
+                )}
               </button>
             </form>
           )}

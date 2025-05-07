@@ -10,6 +10,7 @@ const ReviewForm = () => {
   const user = useSelector((store) => store.authorise);
 
   const [validated, setValidated] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -28,7 +29,10 @@ const ReviewForm = () => {
     const form = event.target;
     if (form.checkValidity() === false) {
       event.stopPropagation(); // Prevent actual submission
+      setValidated(true); // ✅ Only enable validation styling when invalid
+      return;
     } else {
+      setLoading(true); // Start loading
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
       data.userId = user._id;
@@ -41,18 +45,25 @@ const ReviewForm = () => {
       });
 
       const result = await response.json();
-      console.log(result);
       if (result.success) {
+        form.reset(); // ✅ Clear form fields
+        setValidated(false); // ✅ Reset validation styling
         dispatch(
           flashMessageActions.setFlashMessage({
             message: "Review submitted successfully.",
             type: "success",
           })
         );
+      } else {
+        dispatch(
+          flashMessageActions.setFlashMessage({
+            message: result.message,
+            type: "error",
+          })
+        );
       }
+      setLoading(false); // Stop loading
     }
-
-    setValidated(true);
   };
 
   return (
@@ -122,8 +133,12 @@ const ReviewForm = () => {
             </div>
           </div>
 
-          <button type="submit" className={styles.submitButton}>
-            Submit Review
+          <button
+            type="submit"
+            className={styles.submitButton}
+            disabled={loading}
+          >
+            {loading ? "Submitting..." : "Submit Review"}
           </button>
         </form>
       </div>

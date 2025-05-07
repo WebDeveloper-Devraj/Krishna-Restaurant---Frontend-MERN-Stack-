@@ -1,7 +1,7 @@
 import styles from "./DishDetailPage.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import {
   addItemToCart,
@@ -16,6 +16,11 @@ const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 const DishDetailPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isAdding, setIsAdding] = useState(false);
+  const [isDecrease, setIsDecrease] = useState(false);
+  const [isIncrease, setIsIncrease] = useState(false);
+  const [isFavouriteSetting, setIsFavouriteSetting] = useState(false);
+
   const { id } = useParams();
   const dish = useSelector((store) =>
     store.menuCategories.dishes.find((d) => d._id === id)
@@ -33,19 +38,31 @@ const DishDetailPage = () => {
     if (userId) dispatch(fetchCart(userId));
   }, [userId]);
 
-  const handleAddToCart = () => {
-    dispatch(addItemToCart(userId, dish, 1));
+  const handleAddToCart = async () => {
+    setIsAdding(true);
+    await dispatch(addItemToCart(userId, dish, 1));
+    setIsAdding(false);
   };
 
-  const handleIncreaseQuantity = () => {
-    dispatch(updateCartItemQuantity(userId, dish._id, cartItem.quantity + 1));
+  const handleIncreaseQuantity = async () => {
+    setIsIncrease(true);
+    await dispatch(
+      updateCartItemQuantity(userId, dish._id, cartItem.quantity + 1)
+    );
+    setIsIncrease(false);
   };
 
-  const handleDecreaseQuantity = () => {
+  const handleDecreaseQuantity = async () => {
     if (cartItem.quantity > 1) {
-      dispatch(updateCartItemQuantity(userId, dish._id, cartItem.quantity - 1));
+      setIsDecrease(true);
+      await dispatch(
+        updateCartItemQuantity(userId, dish._id, cartItem.quantity - 1)
+      );
+      setIsDecrease(false);
     } else {
-      dispatch(removeCartItem(userId, dish._id));
+      setIsDecrease(true);
+      await dispatch(removeCartItem(userId, dish._id));
+      setIsDecrease(false);
     }
   };
 
@@ -64,21 +81,20 @@ const DishDetailPage = () => {
       navigate("/restaurant/user/login");
       return;
     }
-    const res = await fetch(
-      `${BASE_URL}/restaurant/favourites/toggle`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId: user._id, dishId }),
-      }
-    );
+    setIsFavouriteSetting(true);
+    const res = await fetch(`${BASE_URL}/restaurant/favourites/toggle`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId: user._id, dishId }),
+    });
 
     const data = await res.json();
     if (data.success) {
       dispatch(favouritesSliceActions.setFavourites(data.updatedFavouritesIds));
     }
+    setIsFavouriteSetting(false);
   };
 
   return (
@@ -103,9 +119,16 @@ const DishDetailPage = () => {
           <button
             className={styles.favIconBtn}
             onClick={() => handleToggleFavourite(dish._id)}
+            disabled={isFavouriteSetting}
           >
             {isFavourite ? (
-              <FaHeart color="red" />
+              isFavouriteSetting ? (
+                <span className={styles.spinner}></span>
+              ) : (
+                <FaHeart color="red" />
+              )
+            ) : isFavouriteSetting ? (
+              <span className={styles.spinner}></span>
             ) : (
               <FaRegHeart color="gray" />
             )}
@@ -117,15 +140,17 @@ const DishDetailPage = () => {
                 <button
                   className={styles.quantityButton}
                   onClick={handleDecreaseQuantity}
+                  disabled={isDecrease}
                 >
-                  -
+                  {isDecrease ? <span className={styles.spinner}></span> : "-"}
                 </button>
                 <span className={styles.quantityText}>{cartItem.quantity}</span>
                 <button
                   className={styles.quantityButton}
                   onClick={handleIncreaseQuantity}
+                  disabled={isIncrease}
                 >
-                  +
+                  {isIncrease ? <span className={styles.spinner}></span> : "+"}
                 </button>
               </div>
               <a
@@ -139,8 +164,12 @@ const DishDetailPage = () => {
             <button
               className={styles.addToCartButton}
               onClick={handleAddToCart}
+              disabled={isAdding}
             >
-              Add to Cart
+              <>
+                Add to Cart
+                {isAdding && <span className={styles.spinner}></span>}
+              </>
             </button>
           )}
         </div>

@@ -19,6 +19,8 @@ const LoginPage = () => {
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -26,18 +28,16 @@ const LoginPage = () => {
     if (form.checkValidity() === false) {
       event.stopPropagation(); // Prevent actual submission
     } else {
+      setIsLoading(true);
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
-      const response = await fetch(
-        `${BASE_URL}/restaurant/user/login`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`${BASE_URL}/restaurant/user/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+        credentials: "include",
+      });
 
       const result = await response.json();
 
@@ -65,6 +65,7 @@ const LoginPage = () => {
           })
         );
       }
+      setIsLoading(false);
     }
 
     setValidated(true);
@@ -138,8 +139,18 @@ const LoginPage = () => {
                 </div>
               </div>
 
-              <button type="submit" className={styles.login}>
-                Login
+              <button
+                type="submit"
+                className={styles.login}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <span className={styles.spinner}></span> Loading...
+                  </>
+                ) : (
+                  "Login"
+                )}
               </button>
             </form>
           </div>

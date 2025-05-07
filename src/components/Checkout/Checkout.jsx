@@ -12,6 +12,7 @@ const Checkout = () => {
   const user = useSelector((store) => store.authorise);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [paymentMode, setPaymentMode] = useState("Cash");
 
   // Calculate total cart amount
@@ -23,6 +24,7 @@ const Checkout = () => {
   // Handle checkout form submission
   const handleCheckout = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Start spinner
 
     const form = e.target;
     const formData = new FormData(form);
@@ -61,6 +63,24 @@ const Checkout = () => {
       const allOrders1 = await response2.json();
       dispatch(orderSliceActions.setOrders(allOrders1.orders));
 
+      const newCartRes = await fetch(
+        `${BASE_URL}/restaurant/cart/remove-multiple`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: user._id,
+            dishIds: cartItems.map((item) => item.dishId._id),
+          }),
+        }
+      );
+
+      const newCartData = await newCartRes.json();
+      const newCart = newCartData.cart;
+      dispatch(cartActions.setCart(newCart.items));
+
       // Razorpay payment options
       const options = {
         key: "rzp_test_rTaOUyjCmi7198", // Replace with your Razorpay key
@@ -96,23 +116,6 @@ const Checkout = () => {
             const allOrders2 = await response3.json();
             dispatch(orderSliceActions.setOrders(allOrders2.orders));
 
-            const newCartRes = await fetch(
-              `${BASE_URL}/restaurant/cart/remove-multiple`,
-              {
-                method: "DELETE",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  userId: user._id,
-                  dishIds: cartItems.map((item) => item.dishId._id),
-                }),
-              }
-            );
-
-            const newCartData = await newCartRes.json();
-            const newCart = newCartData.cart;
-            dispatch(cartActions.setCart(newCart.items));
             navigate("/restaurant/user/current-order");
             dispatch(
               flashMessageActions.setFlashMessage({
@@ -127,11 +130,25 @@ const Checkout = () => {
           contact: data.phone,
         },
         theme: { color: "#ff5722" },
+        modal: {
+          // this is the key part
+          ondismiss: function () {
+            // navigate to current order page even if payment wasn't successful
+            navigate("/restaurant/user/current-order");
+            dispatch(
+              flashMessageActions.setFlashMessage({
+                message: "Payment was not completed. You can try again!",
+                type: "error",
+              })
+            );
+          },
+        },
       };
 
       // Open Razorpay payment window
       const rzp = new window.Razorpay(options);
       rzp.open(); // This line opens Razorpay's checkout window where the user actually pays
+      setIsLoading(false);
     } else {
       const response = await fetch(`${BASE_URL}/restaurant/orders`, {
         method: "POST",
@@ -192,6 +209,7 @@ const Checkout = () => {
           })
         );
       }
+      setIsLoading(false);
     }
   };
 
@@ -273,8 +291,18 @@ const Checkout = () => {
             </label>
           </div>
 
-          <button type="submit" className={styles.submitBtn}>
-            Place Order & {paymentMode === "Online" ? "Pay" : "Confirm"}
+          <button
+            type="submit"
+            className={styles.submitBtn}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <>
+                <span className={styles.spinner}></span> Placing Order...
+              </>
+            ) : (
+              <>Place Order & {paymentMode === "Online" ? "Pay" : "Confirm"}</>
+            )}
           </button>
         </form>
       </div>

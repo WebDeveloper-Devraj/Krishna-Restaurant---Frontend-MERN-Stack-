@@ -9,6 +9,7 @@ const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 const CurrentOrder = () => {
   const user = useSelector((store) => store.authorise);
   const [orders, setOrders] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
@@ -50,6 +51,7 @@ const CurrentOrder = () => {
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   const handleRetryPayment = async (order) => {
+    setIsLoading(true);
     const res = await loadRazorpay();
     if (!res) {
       alert("Razorpay SDK failed to load.");
@@ -113,10 +115,23 @@ const CurrentOrder = () => {
       theme: {
         color: "#ff6f3c", // a vibrant food-friendly orange
       },
+      modal: {
+        // this is the key part
+        ondismiss: function () {
+          // navigate to current order page even if payment wasn't successful
+          dispatch(
+            flashMessageActions.setFlashMessage({
+              message: "Payment was not completed. You can try again!",
+              type: "error",
+            })
+          );
+        },
+      },
     };
 
     const rzp = new window.Razorpay(options);
     rzp.open();
+    setIsLoading(false);
   };
 
   // Load Razorpay checkout script dynamically
@@ -196,8 +211,15 @@ const CurrentOrder = () => {
                       <button
                         className={styles.payNowButton}
                         onClick={() => handleRetryPayment(order)}
+                        disabled={isLoading}
                       >
-                        Pay Now
+                        {isLoading ? (
+                          <>
+                            <span className={styles.spinner}></span> Wait
+                          </>
+                        ) : (
+                          <>Pay Now</>
+                        )}
                       </button>
                     )}
                 </div>
