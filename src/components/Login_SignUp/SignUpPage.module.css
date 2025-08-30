@@ -113,6 +113,27 @@
   vertical-align: middle;
 }
 
+.loginRoute {
+  font-size: 12px;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.googleLogin {
+  margin-top: 5px;
+  /* border: 2px solid red; */
+  padding: 0;
+  border-radius: 10px;
+  padding-inline: 12px;
+  padding-bottom: 2px;
+  cursor: pointer;
+  margin-left: 27%;
+}
+
+.googleLogin:hover {
+  background-color: #313685;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -211,5 +232,17 @@
     padding: 3px;
     font-weight: 500;
     font-size: 1rem;
+  }
+
+  .googleLogin {
+    margin-top: 5px;
+    /* border: 2px solid red; */
+    padding: 0;
+    border-radius: 5px;
+    padding-inline: 12px;
+    padding-bottom: 2px;
+    cursor: pointer;
+    margin-left: 20%;
+    font-size: 15px;
   }
 }

@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../../../firebase.js";
+
 import { IoClose } from "react-icons/io5";
 
 import styles from "./LoginPage.module.css";
@@ -6,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginSignUpActions } from "../../store/slices/loginSignUp";
 import { authoriseActions } from "../../store/slices/authorise";
 import { flashMessageActions } from "../../store/slices/flashMessage";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   loadCartFromLocalStorage,
   mergeGuestCartWithUserCart,
@@ -69,6 +72,59 @@ const LoginPage = () => {
     }
 
     setValidated(true);
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+
+      // Send token to your backend for creating/fetching user
+      const token = await user.getIdToken();
+
+      const response = await fetch(
+        `http://localhost:5000/restaurant/user/google-login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // send Firebase token
+          },
+          credentials: "include",
+        }
+      );
+
+      const resultData = await response.json();
+
+      if (resultData.success) {
+        dispatch(authoriseActions.setUser(resultData.user));
+        const guestCart = loadCartFromLocalStorage();
+        dispatch(mergeGuestCartWithUserCart(resultData.user._id, guestCart));
+        dispatch(
+          flashMessageActions.setFlashMessage({
+            message: resultData.message,
+            type: "success",
+          })
+        );
+
+        navigate("/restaurant");
+      } else {
+        dispatch(
+          flashMessageActions.setFlashMessage({
+            message: resultData.message,
+            type: "error",
+          })
+        );
+      }
+    } catch (error) {
+      console.error("Google Login Error:", error);
+      dispatch(
+        flashMessageActions.setFlashMessage({
+          message: "Google login failed",
+          type: "error",
+        })
+      );
+    }
   };
 
   useEffect(() => {
@@ -153,6 +209,18 @@ const LoginPage = () => {
                 )}
               </button>
             </form>
+            <button
+              type="button"
+              onClick={handleGoogleLogin}
+              className={styles.googleLogin}
+            >
+              Login with Google
+            </button>
+
+            <p className={styles.signupRoute}>
+              Don’t have an account?{" "}
+              <Link to="/restaurant/user/signup">Sign up</Link>
+            </p>
           </div>
         </div>
       </div>

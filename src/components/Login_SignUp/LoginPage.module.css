@@ -118,6 +118,27 @@
   }
 }
 
+.login_content p.signupRoute {
+  font-size: 12px;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.googleLogin {
+  margin-top: 5px;
+  /* border: 2px solid red; */
+  padding: 0;
+  border-radius: 10px;
+  padding-inline: 12px;
+  padding-bottom: 2px;
+  cursor: pointer;
+  margin-left: 27%;
+}
+
+.googleLogin:hover {
+  background-color: #313685;
+}
+
 /* tab size */
 /* @media (min-width: 600px) and (max-width: 1030px) {
   .login_content {
@@ -173,7 +194,7 @@
   .login_content {
     padding: 30px;
     width: 300px;
-    height: 350px;
+    height: 370px;
   }
   
   .close_icon {
@@ -209,5 +230,17 @@
     padding: 6px;
     font-weight: 500;
     font-size: 1rem;
+  }
+
+  .googleLogin {
+    margin-top: 5px;
+    /* border: 2px solid red; */
+    padding: 0;
+    border-radius: 5px;
+    padding-inline: 12px;
+    padding-bottom: 2px;
+    cursor: pointer;
+    margin-left: 20%;
+    font-size: 15px;
   }
 }
