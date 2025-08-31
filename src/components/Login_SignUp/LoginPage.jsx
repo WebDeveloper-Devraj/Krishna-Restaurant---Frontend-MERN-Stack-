@@ -81,18 +81,14 @@ const LoginPage = () => {
 
       // Send token to your backend for creating/fetching user
       const token = await user.getIdToken();
-
-      const response = await fetch(
-        `http://localhost:5000/restaurant/user/google-login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // send Firebase token
-          },
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`${BASE_URL}/restaurant/user/google-login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // send Firebase token
+        },
+        credentials: "include",
+      });
 
       const resultData = await response.json();
 
