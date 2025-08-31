@@ -38,17 +38,18 @@ const CurrentOrder = () => {
     fetchOrders();
   }, []);
 
-  const oneDay = 24 * 60 * 60 * 1000;
+  // const oneDay = 24 * 60 * 60 * 1000;
 
-  const currentOrders = orders
-    .filter((order) => {
-      const orderDate = new Date(order.createdAt);
-      const now = new Date();
-      const timeDiff = now - orderDate;
+  // TODO: displaying all orders since i removed order history page completely
+  // const currentOrders = orders
+  //   .filter((order) => {
+  //     const orderDate = new Date(order.createdAt);
+  //     const now = new Date();
+  //     const timeDiff = now - orderDate;
 
-      return timeDiff <= oneDay;
-    })
-    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  //     return timeDiff <= oneDay;
+  //   })
+  //   .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   const handleRetryPayment = async (order) => {
     setIsLoading(true);
@@ -154,7 +155,7 @@ const CurrentOrder = () => {
 
       {loading ? (
         <LoadingSpinner />
-      ) : currentOrders.length == 0 ? (
+      ) : orders.length == 0 ? (
         <div className={styles.emptyState}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/1046/1046750.png"
@@ -168,7 +169,7 @@ const CurrentOrder = () => {
           </Link>
         </div>
       ) : (
-        currentOrders.map((order, index) => {
+        orders.map((order, index) => {
           return (
             <div key={index} className={styles.orderCard}>
               <div className={styles.orderHeader}>

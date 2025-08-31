@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       },
       { path: "/restaurant/user/profile", element: <Profile /> },
       { path: "/restaurant/user/current-order", element: <CurrentOrder /> },
-      { path: "/restaurant/user/orders", element: <OrderHistory /> },
+      // { path: "/restaurant/user/orders", element: <OrderHistory /> },
       { path: "/restaurant/user/favourites", element: <Favourites /> },
       { path: "/restaurant/user/settings", element: <Settings /> },
       { path: "/restaurant/menu", element: <MenuPage /> },

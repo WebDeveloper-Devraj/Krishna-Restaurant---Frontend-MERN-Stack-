@@ -190,9 +190,9 @@ const Header = () => {
                   <NavLink to="/restaurant/user/current-order">
                     🛵 Current Order
                   </NavLink>
-                  <NavLink to="/restaurant/user/orders">
+                  {/* <NavLink to="/restaurant/user/orders">
                     📜 Order History
-                  </NavLink>
+                  </NavLink> */}
                   <NavLink to="/restaurant/user/favourites">
                     ❤️ Favourites
                   </NavLink>
