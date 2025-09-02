@@ -83,7 +83,7 @@ const Checkout = () => {
 
       // Razorpay payment options
       const options = {
-        key: "rzp_test_rTaOUyjCmi7198", // Replace with your Razorpay key
+        key: import.meta.env.VITE_RAZORPAY_KEY,
         amount: order.amount,
         currency: "INR",
         name: "Devraj's Kitchen",
