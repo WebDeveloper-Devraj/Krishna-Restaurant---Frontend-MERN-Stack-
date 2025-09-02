@@ -1,8 +1,6 @@
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
-import { FaYoutube } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import styles from "./Footer.module.css";
@@ -36,6 +34,63 @@ const Footer = () => {
             </li>
             <li>
               <IoMail /> devrajpujari003@gmail.com
+            </li>
+          </ul>
+        </div>
+
+        {/* Get in touch */}
+        <div className={`${styles.section}`}>
+          <div className={styles.footer_list_heading}>Policies</div>
+          <ul>
+            <li>
+              <a
+                className={styles.social_link}
+                href="https://merchant.razorpay.com/policy/RCf90ZqPMs2J1V/refund"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Cancellation & Refunds
+              </a>
+            </li>
+            <li>
+              <a
+                className={styles.social_link}
+                href="https://merchant.razorpay.com/policy/RCf90ZqPMs2J1V/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Terms & Conditions
+              </a>
+            </li>
+            <li>
+              <a
+                className={styles.social_link}
+                href="https://merchant.razorpay.com/policy/RCf90ZqPMs2J1V/shipping"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Shipping
+              </a>
+            </li>
+            <li>
+              <a
+                className={styles.social_link}
+                href="https://merchant.razorpay.com/policy/RCf90ZqPMs2J1V/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Privacy
+              </a>
+            </li>
+            <li>
+              <a
+                className={styles.social_link}
+                href="https://merchant.razorpay.com/policy/RCf90ZqPMs2J1V/contact_us"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contact Us
+              </a>
             </li>
           </ul>
         </div>
