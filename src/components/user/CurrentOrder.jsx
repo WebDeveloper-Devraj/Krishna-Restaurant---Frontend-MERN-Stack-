@@ -65,7 +65,7 @@ const CurrentOrder = () => {
     }
 
     const options = {
-      key: "rzp_test_rTaOUyjCmi7198",
+      key: import.meta.env.VITE_RAZORPAY_KEY,
       amount: order.totalAmount * 100,
       currency: "INR",
       name: "Devraj's Kitchen",
